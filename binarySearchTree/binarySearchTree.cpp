@@ -27,6 +27,19 @@ public:
 	BSearchTree() {
 		myroot = NULL;
 	}
+	BSearchTree(int x) {
+		myroot = new TreeNode(x);
+	}
+	~BSearchTree() {
+		destory(myroot);
+	}
+	void destory(struct TreeNode * root) {
+		if (root == NULL)
+			return;
+		destory(root->left);
+		destory(root->right);
+		delete root;
+	}
 	void insert_recur(struct TreeNode * & r, int x) {//note reference
 		if (!r) {
 			r = new TreeNode(x);
@@ -63,7 +76,46 @@ public:
 		else
 			parent->left = start;
 	}
-
+	//https://www.youtube.com/watch?v=gcULXE7ViZw
+	struct TreeNode * findMin(struct TreeNode* root) {
+		if (root == NULL)
+			return root;
+		while (root->left) {
+			root = root->left;
+		}
+		return root;
+	}
+	struct TreeNode * remove (struct TreeNode * root, int val) {
+		if (root == NULL) return root;
+		else if (val < root->val) root->left = remove(root->left, val);
+		else if (val > root->val) root->right = remove(root->right, val);
+		else {
+			//case 1, No child
+			if (root->left == NULL && root->right == NULL) {
+				delete root;
+				root = NULL;
+			}
+			//case 2, 1 child
+			else if (root->left == NULL) {
+				struct TreeNode * temp = root;
+				root = root->right;
+				delete temp;
+			}
+			//case 2, 1 child
+			else if (root->right == NULL) {
+				struct TreeNode * temp = root;
+				root = root->left;
+				delete temp;
+			}
+			//case 3, 2 children
+			else {
+				struct TreeNode * temp = findMin(root->right);
+				root->val = temp->val;
+				root->right = remove(root->right, temp->val);
+			}
+			return root;
+		}
+	}
 	void inorder_recur(struct TreeNode * r) {
 		if (!r)
 			return;
@@ -202,7 +254,6 @@ public:
 				s.push(curr->right);
 		}
 	}
-	//remove
 	//serilize and deserialize
 	void serilize(struct TreeNode * root, vector<string> & v) {
 		if (!root) {
