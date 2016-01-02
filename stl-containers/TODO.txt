@@ -1,0 +1,11 @@
+1) set, multiset, unordered_set
+2) map (==java TreeMap?), unordered_map(==java HashMap?), multimap?
+The map and the multimap are both containers that manage key/value pairs as single components. 
+The essential difference between the two is that in a map the keys must be unique, 
+while a multimap permits duplicate keys. 
+In both containers, the sort order of components is the sort order of the keys, 
+with the values corresponding to keys determining the order for duplicate keys in a multimap. 
+
+3) priority queue
+4) list
+5) vector
