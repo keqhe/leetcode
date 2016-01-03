@@ -9,3 +9,4 @@ with the values corresponding to keys determining the order for duplicate keys i
 3) priority queue
 4) list
 5) vector
+6) pair

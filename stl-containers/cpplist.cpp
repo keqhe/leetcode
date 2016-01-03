@@ -11,6 +11,13 @@ void printList(list<int> & l) {
 	}
 	cout << endl;
 }
+
+void printListPair(list<pair<int, char>> & l) {
+	for (list<pair<int,char>>::iterator it = l.begin(); it != l.end(); it ++) {
+		cout << "(" << it->first << "," << it->second << ")" << ' ';
+	}
+	cout << endl;
+}
 int main() {
 	list<int> l (3);//3 zeros
 	printList(l);
@@ -28,18 +35,60 @@ int main() {
 	l.pop_back();//20 0 0 0 10
 	printList(l);
 
+	cout << "insert 40 at list.begin() and 30 at list.end()" << endl;
 	l.insert(l.begin(),40);//40 20 0 0 0 10
 	l.insert(l.end(), 30);//40 20 0 0 0 10 30
 	//l.insert(l.begin()+1, 35); //This is wrong, difference from vector
 	printList(l);
-	
+
+	cout << "erase list.begin()" << endl;	
 	l.erase(l.begin());
 	list<int>::iterator it = l.begin();
 	it ++;
 	//l.erase(it+1); This is wrong
 	//l.erase(l.begin()+1); //This is wrong, different from vector
 	printList(l);
+
+	cout << "erase next(list.begin(), 1)" << endl;
+	l.erase(next(l.begin(),1));
+	printList(l);
+
+	cout << "list splice operations tests" << endl;
+	list<pair<int, char>> l1, l2;
+	for (int i = 0; i < 5; i ++) {
+		std::pair<int,char> tmp(i, 'a' + i);
+		l1.push_back(tmp);
+	}
+	for (int i = 0; i < 3; i ++) {
+		l2.push_back(make_pair(10, 'a'+i));
+	}
+
+	cout << "list l1 is : " << endl;
+	printListPair(l1);
+	cout << "list l2 is : " << endl;
+        printListPair(l2);
+
+	cout << endl;
+	list<pair<int,char>>::iterator lp = l1.begin();
+	advance(lp, 1);//now lp points to (1, 'b');
+	l1.splice(lp, l2, l2.begin());
+	cout << "move l2's first element to l1's second position" << endl;
+	cout << "now l1 is : " << endl;
+	printListPair(l1);
+	cout << "now l2 is : " << endl;
+	printListPair(l2);
+
+	cout << "\ncall list.size() to get the size of each list" << endl;
+	cout << "l1 size is " << l1.size() << endl;
+	cout << "l2 size is " << l2.size() << endl;
+
+	cout << "\n list.splice can also work on the same list.." << endl;
+	cout << "mov the third element of l1 to its begining" << endl;
+	l1.splice(l1.begin(), l1, next(l1.begin(),2));
+	cout << "now l1 becomes : " << endl;
+	printListPair(l1);
 	return 0;
 }
 
 /*i guess that is because vector gets continuous memory while list does not*/
+//notice the difference between advance(it, 1) and next(it, 1); former modifies it and the second keeps it the same but return the proper interator
