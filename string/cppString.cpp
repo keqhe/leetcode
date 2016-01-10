@@ -54,5 +54,10 @@ int main() {
                 cout << str[i] << ' ';
         }
         cout << endl;
+	cout << "check substr... " << endl;
+	string sub = "abcd";
+	cout << sub.substr(0) << endl;
+	sub += sub[0];
+	cout << sub << endl;
 	return 0;
 }

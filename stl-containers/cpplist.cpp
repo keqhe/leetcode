@@ -2,6 +2,7 @@
 #include<iostream>
 #include<string>
 #include<list>
+#include<algorithm>
 
 using namespace std;
 
@@ -87,6 +88,19 @@ int main() {
 	l1.splice(l1.begin(), l1, next(l1.begin(),2));
 	cout << "now l1 becomes : " << endl;
 	printListPair(l1);
+
+
+	cout << "a common error is about list.begin() vs list.front() and list.end() vs list.back()" << endl;
+	//check sort
+	l.clear();
+	printList(l);
+	l.push_back(2);
+	l.push_back(1);
+	l.push_back(3);
+	printList(l);	
+	//sort(l.begin(), l.end());//sort can not be applied to C++ list like this
+	l.sort(std::greater<int>());
+	printList(l);
 	return 0;
 }
 
