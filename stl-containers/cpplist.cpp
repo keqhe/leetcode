@@ -19,6 +19,20 @@ void printListPair(list<pair<int, char>> & l) {
 	}
 	cout << endl;
 }
+
+struct Node {
+	int x;
+	int y;
+	Node (int x, int y) {
+		this->x = x;
+		this->y = y;
+	}
+};
+
+bool NodeCmp (const struct Node n1, const struct Node n2) {
+	return n1.x < n2.x;
+}
+
 int main() {
 	list<int> l (3);//3 zeros
 	printList(l);
@@ -101,6 +115,31 @@ int main() {
 	//sort(l.begin(), l.end());//sort can not be applied to C++ list like this
 	l.sort(std::greater<int>());
 	printList(l);
+	//what about sorting struct?
+	list<struct Node> l3;
+	struct Node n1(2, 2);
+	struct Node n2(1, 1);
+	l3.push_back(n1);
+	l3.push_back(n2);
+	l3.sort(NodeCmp);
+	for (list<struct Node>::iterator it = l3.begin(); it != l3.end(); it ++) {
+		cout << "(" << it->x << "," << it->y << ")" << " ";
+	}
+	cout << endl;
+	//more about erase
+	list<int> l4;
+	for (int i = 0; i < 10; i ++)
+		l4.push_back(i);
+	printList(l4);
+	list<int>::iterator it4 = l4.begin();
+	/*below is wrong
+	for (list<int>::iterator it = l4.begin(); it != l4.end(); it ++) {
+		l4.erase(it);
+	}*/
+	while (it4 != l4.end()) {
+		it4 = l4.erase(it4);
+	}
+	printList(l4);
 	return 0;
 }
 
