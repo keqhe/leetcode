@@ -3,6 +3,7 @@
 #include<string>
 #include<list>
 #include<algorithm>
+#include<vector>
 
 using namespace std;
 
@@ -137,9 +138,20 @@ int main() {
 		l4.erase(it);
 	}*/
 	while (it4 != l4.end()) {
-		it4 = l4.erase(it4);
+		it4 = l4.erase(it4); //or l4.erase(it4++)
 	}
 	printList(l4);
+	//list insert a range of elements
+	vector<int> test1 = {1, 2, 3, 4, 5};
+	vector<int> test2 = {11, 12, 13, 14, 15};
+	list<vector<int>::iterator> l5;
+	for (vector<int>::iterator it = test1.begin(); it != test1.end(); it ++)
+		l5.push_back(it);
+	for (vector<int>::iterator it = test2.begin(); it != test2.end(); it ++)
+                l5.push_back(it);	
+	for (auto & x : l5)
+		cout << *x << " ";
+	cout << endl;
 	return 0;
 }
 
