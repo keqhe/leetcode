@@ -20,7 +20,14 @@ int main() {
 	v.insert(v.begin()+4, 4); // 0 1 2 3 4 5
 	printVector(v);
 
-	v.erase(v.begin()+1);
+	v.erase(v.begin()+1); //0, 2, 3, 4, 5
 	printVector(v);
+
+	//clear vector
+	v.clear();
+	printVector(v);
+	//if a vector is empty, v.begin() == v.end()
+	cout << "v.begin() == v.end() ? " << (v.begin() == v.end()) << endl;
+	
 	return 0;	
 }
