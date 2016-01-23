@@ -59,5 +59,18 @@ int main() {
 	cout << sub.substr(0) << endl;
 	sub += sub[0];
 	cout << sub << endl;
+	//string find substr
+	str = "hello world!";
+	size_t found = str.find("o");
+	if (found != string::npos)
+		cout << "found o at index " << found << endl;
+	else
+		cout << "can not find o in str" << endl;
+
+	found = str.find("o", found+1);
+        if (found != string::npos)
+                cout << "found o at index " << found << endl;
+        else
+                cout << "can not find o in str" << endl;
 	return 0;
 }
