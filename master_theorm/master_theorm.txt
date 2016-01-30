@@ -1,0 +1,7 @@
+
+T(n) = a*T(n/b) + f(n)
+
+there case: if f(n) = O(n^(log_b^(a-e)), then time complexity is O(n^(log_b^a));
+else if f(n) = theta(log_b^a), then time complexity is O(n^(log_b^2)*log(n))
+else if f(n) = omega(log_b^(a+e)), then time complexity is O(f(n))
+
