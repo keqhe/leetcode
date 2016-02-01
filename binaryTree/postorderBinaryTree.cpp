@@ -16,7 +16,7 @@ struct TreeNode {
 		right = NULL;
 	}
 };
-
+//check ref: https://leetcode.com/discuss/71943/preorder-inorder-and-postorder-iteratively-summarization
 class Solution {
 public:
     //preorder and inorder traversal is considered medium
