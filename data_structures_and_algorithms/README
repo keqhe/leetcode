@@ -1,0 +1,7 @@
+Data strcutures and algorithms are keys. Learning built-in data structures
+ (e.g., STL in C++) is important to speed up programming. For algorithms, we have to practice 
+again and again, so we have better sense how to solve a problem.
+
+Feb 14, 2016: discussed commonly used functions for C++ vector.
+discussed an example question (detect whether an array has duplicates) and 
+discussed what kinds of data structures we need to know and what kind of algorithms we need to know.
