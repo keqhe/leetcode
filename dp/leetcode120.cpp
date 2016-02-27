@@ -5,7 +5,8 @@ using namespace std;
 
 class Solution {
 public:
-    int minimumTotal(vector<vector<int>>& triangle) {
+    //this space complexity is O(n^2)
+    int minimumTotal_morespace(vector<vector<int>>& triangle) {
         if (triangle.empty() || triangle[0].empty())
             return 0;
         int m = triangle.size();
@@ -23,6 +24,22 @@ public:
         }
         
         return dp[0][0];
+    }
+    int minimumTotal(vector<vector<int>>& triangle) {
+        if (triangle.empty() || triangle[0].empty())
+            return 0;
+        int m = triangle.size();
+        vector<int> dp(m, 0);
+        for (int i = 0; i < m; i ++)
+            dp[i] = triangle[m-1][i];
+         for (int i = m-2; i >= 0; i --) {
+            cout << "debug" << endl;
+            for (int j = 0; j <= i; j ++) {
+                
+                dp[j] = triangle[i][j] + min(dp[j], dp[j+1]);
+            }
+        }
+        return dp[0];
     }
 };
 
