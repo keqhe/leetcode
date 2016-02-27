@@ -16,7 +16,7 @@ public:
         return sum;
     }
     //dp[i] = max(0, dp[i-1] + (prices[i] - prices[i-1]))
-    int maxProfit(vector<int>& prices) {
+    int maxProfit_thought2(vector<int>& prices) {
         if (prices.empty())
             return 0;
         vector<int> dp(prices.size(), 0);
@@ -28,6 +28,22 @@ public:
         }
         
         return largest;
+    }
+
+    //another method
+    //denote dp[i] as the max profit between [0...i], ending at most on day i, one transaction allowed at most
+    int maxProfit(vector<int>& prices) {
+        if (prices.empty())
+            return 0;
+        vector<int> dp(prices.size(), 0);
+        dp[0] = 0;
+        int min_buy = prices[0];
+        for (int i = 0; i < prices.size(); i ++) {
+            dp[i] = max(dp[i-1], prices[i] - min_buy);
+            min_buy = min(min_buy, prices[i]);
+        }
+        
+        return dp[prices.size()-1];
     }
 };
 
