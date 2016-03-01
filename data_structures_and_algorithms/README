@@ -5,3 +5,5 @@ again and again, so we have better sense how to solve a problem.
 Feb 14, 2016: discussed commonly used functions for C++ vector and hash table (unordered_map).
 discussed an example question (detect whether an array has duplicates) and 
 discussed what kinds of data structures we need to know and what kind of algorithms we need to know.
+
+Feb 28, 2016: discussed c++ list, string, queue, stack
