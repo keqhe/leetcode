@@ -13,18 +13,18 @@ public:
             return 0;
         int left = 0;
         int right = citations.size() - 1;
-        int index;
+        int index=0;
         while (left <= right) {
             int mid = left + (right - left)/2;
-            if (citations[citations.size()-mid-1] > mid) //mid+1 papers have at least mid+1 citations
+            if (citations[citations.size()-mid-1] > mid) //mid+1 papers have >= mid+1 citations
             {
                 left = mid + 1;
-                index = mid;
+                index = left;
             }
             else
                 right = mid - 1;
         }
-        return left;
+        return index;
     }
 };
 
