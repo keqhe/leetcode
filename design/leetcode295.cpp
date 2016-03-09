@@ -14,6 +14,7 @@ public:
         if (maxHeap.size() < minHeap.size()) {
             maxHeap.push(minHeap.top());
             minHeap.pop();
+	    //after this, maxHeap should have 1 more element compared with minHeap
         }
     }
 
