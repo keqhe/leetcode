@@ -11,7 +11,7 @@ public:
     //rotated: [1,3,1,1,1]
     //[1,1,1,1,3]
     //[3,1,1,1,1]
-    bool search(vector<int>& nums, int target) {
+    bool search__1(vector<int>& nums, int target) {
         int left = 0;
         int right = nums.size() - 1;
         while (left <= right) {
@@ -39,6 +39,34 @@ public:
             }
         }
         return false;
+    }
+    
+    //http://bangbingsyb.blogspot.com/2014/11/leetcode-search-in-rotated-sorted-array.html
+    int search(vector<int>& nums, int target) {
+        int left = 0;
+        int right = nums.size() - 1;
+        
+        while (left <= right) {
+            int mid = left + (right - left)/2;
+            if (nums[mid] == target)
+                return true;
+            if (nums[mid] < nums[right])  {//right half ordered
+                if (target > nums[mid] && target <= nums[right])
+                    left = mid + 1;
+                else
+                    right = mid - 1;
+            }
+            else if (nums[mid] > nums[right]){//left half ordered
+                if (target < nums[mid] && nums[left] <= target) //target is in range [left, mid-1]
+                    right = mid - 1;
+                else
+                    left = mid + 1;
+            }
+            else
+                right --;
+            
+        }
+        return false;//if not found
     }
 };
 
