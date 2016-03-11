@@ -1,0 +1,14 @@
+--c++ class inheritance
+https://www.cs.bu.edu/teaching/cpp/inheritance/intro/
+
+--what's the difference between overloading and overriding?
+Overloading a method (or function) in C++ is the ability for functions of the same name to be defined as long as these methods have different signatures (different set of parameters). Method overriding is the ability of the inherited class rewriting the virtual method of the base class.
+
+a) In overloading, there is a relationship between methods available in the same class whereas in overriding, there is relationship between a superclass method and subclass method.
+
+(b) Overloading does not block inheritance from the superclass whereas overriding blocks inheritance from the superclass.
+
+(c) In overloading, separate methods share the same name whereas in overriding, subclass method replaces the superclass.
+
+(d) Overloading must have different method signatures whereas overriding must have same signature.
+
