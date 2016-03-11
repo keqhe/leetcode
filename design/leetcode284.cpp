@@ -3,6 +3,7 @@
 #include<iostream>
 
 using namespace std;
+//for the follow up question, use class templates
 
 // Below is the interface for Iterator, which is already defined for you.
 // **DO NOT** modify the interface for Iterator.
